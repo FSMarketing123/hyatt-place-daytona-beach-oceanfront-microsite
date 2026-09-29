@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hyatt Place Daytona Beach Oceanfront</title>
+<meta name="description" content="Hodges Ward Elliott is pleased to exclusively offer for sale the fee-simple interest in the Hyatt Place Daytona Beach Oceanfront, a 143-key select-service hotel located directly on the Atlantic Ocean in Daytona Beach Shores, FL.">
+<link rel="canonical" href="https://hyattplacedaytonabeachoceanfront.hodgeswardelliott.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hyatt Place Daytona Beach Oceanfront">
+<meta property="og:description" content="143-key select-service hotel directly on the Atlantic Ocean in Daytona Beach Shores, FL. Offered fee simple, unencumbered of management.">
+<meta property="og:url" content="https://hyattplacedaytonabeachoceanfront.hodgeswardelliott.com/">
+<meta property="og:image" content="https://hyattplacedaytonabeachoceanfront.hodgeswardelliott.com/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================================
+   Hyatt Place Daytona Beach Oceanfront — Hodges Ward Elliott offering microsite.
+
+   Rebuilt from the Squarespace WXR export. The export's <style> blocks carry
+   the fluid-engine grid placement for every block, so the layout below is the
+   original's own grid-area values rather than an approximation: sections are
+   24 columns + 2 gutter columns on desktop, 8 + 2 on mobile, 11px gap, with a
+   row height of 2.15% of the container width. See README.md.
+   ========================================================================= */
+
+:root{
+  /* Colour scheme follows hyatt.com's Hyatt Place Daytona Beach Oceanfront
+     page (read off the 3 Dec 2025 Wayback snapshot; the live page blocks
+     automated browsers). Cream ground, navy headings and bands, teal and sand
+     as secondary bands, charcoal body copy, square outlined buttons. */
+  --cream:#f6edd8;        /* page ground            rgb(246,237,216) */
+  --navy:#283e53;         /* headings, dark bands   rgb(40,62,83)    */
+  --teal:#4a6b74;         /* secondary band         rgb(74,107,116)  */
+  --sand:#d3b782;         /* accent band / rules    rgb(211,183,130) */
+  --charcoal:#282828;     /* body copy              rgb(40,40,40)    */
+
+  /* Grid. Squarespace's own formulae with this site's own tokens — 3vw gutter,
+     1600px max width — rather than the 4vw / 1500px the export falls back to.
+     Verified against the live build at 1440: row 29.09px, cell 45.23px. */
+  --gap:11px;
+  --cell-max:calc((1600px - (var(--gap) * 23)) / 24);
+  --cell-max-m:calc((1600px - (var(--gap) * 7)) / 8);
+  --container-width:min(1600px, calc(100vw - 6vw));
+  --row-h:calc(var(--container-width) * 0.0215);
+
+  /* One family throughout: Poppins, at the client's request. */
+  --body:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  --head:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--cream);color:var(--charcoal);
+  font-family:var(--body);font-weight:400;font-size:16px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+
+/* Both headings are Poppins, uppercase. The h2 interpolates exactly
+   as Venezia's does (33.54 at 375, 47.10 at 1440); the h4 line is fitted to
+   the live build at 375 (19.90) and 1440 (22.91). */
+h2,h4{font-family:var(--head);font-weight:400;text-transform:uppercase;margin:0}
+h2{font-size:clamp(33.54px, calc(16px + 2.16vw), 50.56px);line-height:1.3}
+h4{font-size:min(calc(18.84px + .283vw), 24.3px);line-height:1.3776;margin:0 0 8px}
+h4 strong{font-weight:700}
+p{margin:8px 0 16px}
+p:first-child{margin-top:0}
+p:last-child{margin-bottom:0}
+p + h4{margin-top:32px}
+
+.skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:12px 20px;z-index:100}
+.skip:focus{left:0}
+
+/* ---------------------------------------------------------------- sections
+   Squarespace sizes these from the viewport: padding is a fraction of vmax
+   and the minimum height a fraction of vh, and the grid is centred vertically
+   within whatever height results. Measured at 1440x900 and 375x812:
+     large  pad 10vmax   min 100vh   (hero)
+     medium pad 6.6vmax  min 66vh
+     custom pad 4.4vmax  min 44vh    (the Investment Highlights band)
+     small  pad 3.3vmax  min 33vh    (overview, footer) */
+.sec{
+  position:relative;isolation:isolate;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:6.6vmax 0;min-height:66vh;
+}
+.sec-lg{padding:10vmax 0;min-height:100vh}
+.sec-band{padding:4.4vmax 0;min-height:44vh}
+.sec-sm{padding:3.3vmax 0;min-height:33vh}
+/* The Investment Highlights band is a fixed 900px on desktop rather than the
+   source's 44vh (396px at 900 tall); the heading stays centred in it. */
+@media (min-width:768px){#highlights{min-height:900px}}
+/* The overview is a fixed 900px on desktop rather than the source's 33vh;
+   the copy and CA buttons stay centred in it. */
+@media (min-width:768px){#overview{min-height:900px}}
+/* The upside section is a fixed 1250px on desktop, with its photograph
+   pinned to the bottom edge so the pool deck stays in frame as it grows. */
+@media (min-width:768px){#hl-upside{min-height:1250px}}
+.sec-navy{background:var(--navy);color:#fff}
+.sec-cream{background:var(--cream);color:var(--charcoal)}
+.sec-teal{background:var(--teal);color:#fff}
+.sec-footer{background:var(--navy);color:#fff}
+/* Headings on a light ground are navy, as on hyatt.com. */
+.sec-cream h4,.card h4,#hl-upside h4{color:var(--navy)}
+
+/* Full-bleed photographic ground plus its overlay, both on the section's own
+   pseudo-elements so the grid needs no wrapper. z-index:-1 inside an isolated
+   section keeps them under the grid without giving .fe a stacking context. */
+.sec-bg::before,.sec-bg::after{content:"";position:absolute;inset:0;z-index:-1}
+.sec-bg::before{
+  background-image:var(--bg);background-size:cover;
+  background-position:var(--bg-pos, 50% 50%);
+}
+.sec-bg::after{background:var(--ov-c, #000);opacity:var(--ov, 0)}
+
+/* ------------------------------------------------------ textured ground
+   #overview carries a tiled concrete grain (xx Patterns xx/concrete-wall-1.png,
+   a 520px transparent PNG of dark speckle) pinned to the viewport, at 80%,
+   multiplied into the cream. It is a layer of its own rather than the section's
+   background so the opacity applies to the tile only, not to the copy; the
+   section's isolation:isolate makes it the blending group, so the multiply
+   resolves against the cream and nothing else. */
+.sec-tex-concrete::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:url('assets/texture-concrete-wall.png') repeat 0 0 / 520px auto;
+  background-attachment:fixed;
+  opacity:.8;mix-blend-mode:multiply;
+}
+/* #property and #hl-location take the white version of the same tile on
+   their navy and teal grounds. Same
+   pinning and tiling, at 70%, and screen rather than multiply: multiply can only
+   darken, so near-white speckle multiplied into navy would vanish. Screen is
+   its light-on-dark counterpart, lifting the navy where multiply darkens the
+   cream. */
+.sec-tex-concrete-white::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:url('assets/texture-concrete-wall-white.png') repeat 0 0 / 520px auto;
+  background-attachment:fixed;
+  opacity:.7;mix-blend-mode:screen;
+}
+/* iOS Safari ignores background-attachment:fixed and repaints badly under it. */
+@media (hover:none){
+  .sec-tex-concrete::before,.sec-tex-concrete-white::before{background-attachment:scroll}
+}
+
+/* ---------------------------------------------------------------- parallax
+   The hero photograph zooms in as the page scrolls past it and drifts down a
+   little slower than the page. The photograph lives on ::before, which script
+   cannot address, but it inherits custom properties from the section: the
+   scroll handler writes --pz (scale) and --py (offset) and the layer reads
+   them. The layer is inset past the section's top and bottom so the drift can
+   never uncover an edge, and the section clips it. */
+.sec-px{overflow:hidden}
+.sec-px::before{
+  inset:-16% 0;
+  /* --py0 is a fixed offset on top of the scroll drift. #hl-upside uses it to
+     sit its photograph lower, so the pool-deck umbrellas stay below the copy. */
+  transform:translate3d(0,calc(var(--py0,0%) + var(--py,0px)),0) scale(var(--pz,1));
+  transform-origin:50% 50%;
+  will-change:transform;
+  backface-visibility:hidden;
+}
+/* ------------------------------------------------------ glass label plate
+   From the HWE Glass Image Band template (xx Templates xx/HWE Glass Image
+   Band), itself taken from the Hyatt House Shenandoah "Investment Highlights"
+   band: a square plate of warm charcoal glass, hairline rules top and bottom,
+   and a light label on one line. Values are the template's, except the label
+   is Poppins Light rather than the template's Cormorant Garamond.
+   The block spans the whole band so the plate sits dead centre, as the
+   template's absolutely positioned ::after does. */
+.b-glass{display:flex;align-items:center;justify-content:center}
+.glass{
+  background:rgba(40,35,31,.34);
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
+  border-top:1px solid rgba(255,255,255,.28);
+  border-bottom:1px solid rgba(255,255,255,.28);
+  padding:22px 60px;
+}
+.glass h2{
+  font-family:var(--head);font-weight:300;
+  font-size:clamp(30px,4.4vw,58px);line-height:1.3;letter-spacing:.01em;
+  text-transform:none;color:#fff;white-space:nowrap;text-align:center;
+}
+/* Browsers without backdrop-filter get a denser tint so the label stays legible. */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .glass{background:rgba(40,35,31,.62)}
+}
+/* Phones: the template's fix for a nowrap label running past the viewport. */
+@media (max-width:560px){
+  .glass{max-width:calc(100vw - 32px);padding:16px 24px}
+  .glass h2{white-space:normal;line-height:1.12}
+}
+
+/* ------------------------------------------------------------------- grid */
+.fe{
+  display:grid;position:relative;width:100%;
+  gap:var(--gap);
+  grid-template-columns:
+    minmax(calc(6vw - var(--gap)), 1fr)
+    repeat(8, minmax(0, var(--cell-max-m)))
+    minmax(calc(6vw - var(--gap)), 1fr);
+  grid-template-rows:repeat(var(--rows-m), minmax(24px, auto));
+  overflow-x:clip;
+}
+@media (min-width:768px){
+  .fe{
+    grid-template-columns:
+      minmax(calc(3vw - var(--gap)), 1fr)
+      repeat(24, minmax(0, var(--cell-max)))
+      minmax(calc(3vw - var(--gap)), 1fr);
+    grid-template-rows:repeat(var(--rows-d), minmax(var(--row-h), auto));
+  }
+}
+/* --m / --d are the export's own mobile and desktop grid-areas, --z its
+   per-block z-index. */
+.b{grid-area:var(--m);min-width:0;z-index:var(--z,auto)}
+@media (min-width:768px){.b{grid-area:var(--d)}}
+
+/* An image fills its grid area and contributes no height of its own, as the
+   fluid engine's do — left in flow, its intrinsic height would grow the auto
+   rows under it and stretch the whole section. */
+.b-img{position:relative;overflow:hidden}
+.b-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.b-fit img{object-fit:contain}
+
+/* Text blocks with a background. The source insets the copy by a percentage
+   of the block width — 6% on the oceanfront card, 3% on the events card — and
+   percentage padding resolves against the grid area's width, as it does there. */
+.card{background:#fff;color:var(--charcoal);padding:var(--inset, 3%)}
+.card p{font-size:16px}
+
+/* --------------------------------------------------------------- masthead */
+.hwe-mast{
+  position:absolute;z-index:5;top:28.8px;left:3vw;width:153px;
+}
+.hwe-mast img{width:100%}
+@media (max-width:767px){.hwe-mast{top:22.5px;left:6vw;width:76.5px}}
+
+.hero-card{background:rgba(255,255,255,.75);border-radius:45px}
+.b-hero-logo{position:relative;margin:0}
+/* The horizontal lockup carries the property name and location itself, so it
+   replaces the stacked mark and the two text lines. It is the page's h1; the
+   alt text is the heading's accessible name. */
+.b-hero-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+
+/* ---------------------------------------------------------------- buttons */
+.btn{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  width:100%;height:100%;
+  min-height:clamp(52px, calc(36px + 2.29vw), 80px);
+  /* 8px sides, not the source's 35: Instrument Sans sets "DOWNLOAD
+     CONFIDENTIALITY AGREEMENT" at 360px against Aktiv Grotesk's 346, and at
+     35px it wrapped in the 383px button. 8px keeps it on one line from 1440. */
+  padding:10px 8px;
+  /* hyatt.com's buttons: square, 1px border, uppercase. Filled navy here
+     rather than outline-only, so they hold up on the pool photograph. */
+  background:var(--navy);color:#fff;text-decoration:none;
+  border:1px solid var(--navy);border-radius:0;
+  font-size:14px;font-weight:500;letter-spacing:.8px;line-height:1.25;text-transform:uppercase;
+  transition:background .2s ease, transform .2s ease;
+}
+.btn:hover,.btn:focus-visible{background:var(--teal);border-color:var(--teal);transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.b-btn{display:flex;align-items:center}
+
+/* --------------------------------------------------------- property table
+   The source's own code-block CSS: bold uppercase labels on 25px padding,
+   values on 15px, a white rule under every row but the last, and a pale tint
+   on hover. */
+.prop-table{width:100%;border-collapse:collapse;color:#fff}
+.prop-table tr{border-bottom:1px solid rgba(211,183,130,.6);transition:background-color .18s ease}
+.prop-table tr:last-child{border-bottom:0}
+@media (hover:hover){.prop-table tr:hover{background:rgba(227,255,254,.15)}}
+.prop-table td{padding:15px 10px;font-size:16px;line-height:25px;vertical-align:middle}
+.prop-table td.pbold{
+  padding:25px 5px 25px 10px;
+  font-weight:700;text-transform:uppercase;
+}
+.prop-table ul{margin:16px 0;padding-left:25px}
+.prop-table li{margin-left:-5px}
+.nobr{white-space:nowrap}
+/* The two unbreakable address lines make the table 389px wide. The column is
+   439px at 1440 but 309 at 1024 and 330 on a phone, where the source scrolls
+   the table sideways. Below 1300 the value cell wraps instead. */
+@media (max-width:1299px){
+  .prop-table td:not(.pbold) .nobr{white-space:normal}
+}
+@media (max-width:767px){
+  .prop-table td{padding-left:8px;padding-right:8px}
+}
+
+/* --------------------------------------------------------------- contacts */
+.contacts{display:flex;flex-direction:column}
+.contacts-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 20px;align-items:start;margin:0 0 10px}
+.contacts-header{
+  grid-column:1/-1;
+  margin:0 0 10px;padding:20px 0 0;border-bottom:1px solid var(--sand);
+  font-size:16px;font-weight:400;line-height:1.7;letter-spacing:1.6px;text-transform:uppercase;
+}
+@media (max-width:900px){.contacts-group{grid-template-columns:1fr}}
+.contact{margin:20px 0;font-size:15.2px;font-weight:300;line-height:1.4;letter-spacing:.304px}
+.contact b{font-weight:700}
+.contact a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);
+  overflow-wrap:anywhere}
+.contact a:hover,.contact a:focus-visible{border-bottom-color:#fff}
+
+/* Centred both ways in its column. On desktop the block spans all ten rows,
+   the full height of the contacts beside it, rather than the source's top two. */
+.b-footer-logo{display:flex;align-items:center;justify-content:center}
+.b-footer-logo img{width:100%;max-width:214px;height:auto}
+
+/* ------------------------------------------------------------- mobile fix
+   Under 768px the source's hero card collapses to a bare 59px bar across the
+   top two rows, and the lockup, the property name and the location reflow
+   below it onto the open photograph. Here the card spans the blocks it backs,
+   as it does on desktop. */
+@media (max-width:767px){
+  .hero-card{border-radius:32px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<main id="main">
+
+<!-- ======================================================== hero / masthead -->
+<section class="sec sec-lg sec-navy sec-bg sec-px" id="hero" data-px
+         style="--bg:url('assets/hero-pool.webp');--ov:.25">
+  <a class="hwe-mast" href="#hero"><img src="assets/hwe-white.svg" alt="Hodges Ward Elliott" width="153" height="59"></a>
+  <div class="fe" style="--rows-m:10;--rows-d:10">
+    <div class="b hero-card" style="--m:2/2/9/10;--d:2/9/10/19;--z:1"></div>
+    <h1 class="b b-hero-logo" style="--m:3/3/8/9;--d:3/10/9/18;--z:3">
+      <img src="assets/logo-hyatt-place-daytona-horz.svg" alt="Hyatt Place Daytona Beach Oceanfront — Daytona Beach Shores, FL" width="1331" height="649">
+    </h1>
+  </div>
+</section>
+
+<!-- ================================================================= intro -->
+<section class="sec sec-sm sec-cream sec-tex-concrete" id="overview">
+  <div class="fe" style="--rows-m:11;--rows-d:9">
+    <div class="b" style="--m:1/2/8/10;--d:1/5/7/23;--z:0">
+      <p>Hodges Ward Elliott (&ldquo;HWE&rdquo;) is pleased to exclusively offer for sale the fee-simple interest in the Hyatt Place Daytona Beach Oceanfront (the &ldquo;Resort&rdquo;, &ldquo;Hotel&rdquo; or &ldquo;Property&rdquo;), a 143-key select-service hotel located directly on the Atlantic Ocean in Daytona Beach Shores, FL. The Hotel benefits from a highly visible, irreplaceable beachfront position along South Atlantic Avenue, just minutes from Daytona Beach&rsquo;s world-famous attractions and eight miles from Daytona International Speedway.</p>
+      <p>Daytona Beach is recognized as one of Florida&rsquo;s most established leisure markets, drawing more than 4.5 million annual visitors in 2024 with its 23 miles of sandy beaches, motorsport events, collegiate competitions, and year-round festivals. The area is supported by strong drive-to leisure demand and convenient regional access via Daytona Beach International Airport (DAB), Orlando International Airport (MCO), and Orlando Sanford International Airport (SFB).</p>
+      <p>Offered fee simple and unencumbered of management, the Property represents a rare opportunity to acquire a beachfront asset in one of Florida&rsquo;s most dynamic and resilient leisure destinations.</p>
+    </div>
+    <div class="b b-btn" style="--m:8/2/10/10;--d:8/6/10/13;--z:1">
+      <a class="btn" href="assets/Hyatt-Place-Daytona-Beach-Oceanfront-CA.docx" download>DOWNLOAD CONFIDENTIALITY AGREEMENT</a>
+    </div>
+    <div class="b b-btn" style="--m:10/2/12/10;--d:8/15/10/22;--z:2">
+      <a class="btn" href="https://secure.rightsignature.com/templates/2ac07558-9176-4d82-9b18-1d2df0c0deec/template-signer-link/49aea1381ead6e0527bd6de7826555d0" target="_blank" rel="noopener">SIGN CONFIDENTIALITY AGREEMENT</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== property snapshot -->
+<section class="sec sec-navy sec-tex-concrete-white" id="property" aria-label="Property snapshot">
+  <div class="fe" style="--rows-m:36;--rows-d:38">
+    <div class="b b-img b-fit" style="--m:1/2/7/10;--d:1/4/7/12;--z:2">
+      <img src="assets/logo-hyatt-place-white.svg" alt="Hyatt Place" width="256" height="266">
+    </div>
+    <div class="b" style="--m:7/2/13/10;--d:7/4/31/12;--z:1">
+      <table class="prop-table">
+        <tbody>
+          <tr><td class="pbold">Address:</td><td><span class="nobr">3161 South Atlantic Avenue,</span> <span class="nobr">Daytona Beach Shores,&nbsp;FL&nbsp;32118</span></td></tr>
+          <tr><td class="pbold">Rooms:</td><td>143</td></tr>
+          <tr><td class="pbold">Floors:</td><td>10</td></tr>
+          <tr><td class="pbold">Year Built:</td><td>1975</td></tr>
+          <tr><td class="pbold">Year Renovated:</td><td>2013</td></tr>
+          <tr><td class="pbold">Class:</td><td>Upscale</td></tr>
+          <tr><td class="pbold">Land Area:</td><td>&plusmn; 1.45 AC</td></tr>
+          <tr><td class="pbold"><span class="nobr">F&amp;B Outlets:</span></td><td>The Placery</td></tr>
+          <tr><td class="pbold">Meeting Space:</td><td>482 SF</td></tr>
+          <tr><td class="pbold">Amenities:</td><td><ul><li>Direct Beachfront Access</li><li>Newly Renovated Outdoor Pool</li><li>Fitness Center</li><li>Complimentary Breakfast</li></ul></td></tr>
+          <tr><td class="pbold"><span class="nobr">Interest:</span></td><td>Fee Simple</td></tr>
+          <tr><td class="pbold">Management:</td><td>Unencumbered</td></tr>
+          <tr><td class="pbold">Labor:</td><td>Non-Union</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="b b-img" style="--m:13/2/19/10;--d:1/13/20/24;--z:3">
+      <img src="assets/prop-exterior.webp" alt="The hotel's porte-cochère and ten-storey tower at dusk" loading="lazy" width="1400" height="1383">
+    </div>
+    <div class="b b-img" style="--m:19/2/25/10;--d:20/13/31/24;--z:4">
+      <img src="assets/prop-lobby.webp" alt="Lobby lounge with coral armchairs beside the bar" loading="lazy" width="1400" height="697">
+    </div>
+    <div class="b b-img" style="--m:25/2/31/10;--d:31/4/39/14;--z:5">
+      <img src="assets/prop-room-king.webp" alt="Guestroom with a sofa and balcony doors" loading="lazy" width="1400" height="690">
+    </div>
+    <div class="b b-img" style="--m:31/2/37/10;--d:31/14/39/24;--z:6">
+      <img src="assets/prop-lounge.webp" alt="Guestroom seating area" loading="lazy" width="1400" height="1016">
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ investment highlights band -->
+<section class="sec sec-band sec-navy sec-bg sec-px" id="highlights" data-px="0.25"
+         style="--bg:url('assets/highlights-banner.webp')">
+  <div class="fe" style="--rows-m:2;--rows-d:4">
+    <div class="b b-glass" style="--m:1/1/3/11;--d:1/1/5/27;--z:1">
+      <div class="glass"><h2>Investment Highlights</h2></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ highlight — oceanfront site -->
+<section class="sec sec-teal sec-tex-concrete-white" id="hl-location">
+  <div class="fe" style="--rows-m:29;--rows-d:22">
+    <div class="b b-img" style="--m:1/2/8/10;--d:1/11/13/24;--z:0">
+      <img src="assets/hl-aerial.webp" alt="Aerial view of the hotel's pool deck on the beach at Daytona Beach Shores" loading="lazy" width="1600" height="900">
+    </div>
+    <div class="b b-img" style="--m:8/2/15/10;--d:13/4/23/17;--z:1">
+      <img src="assets/hl-room-double.webp" alt="Double-queen guestroom with a sofa" loading="lazy" width="1600" height="1000">
+    </div>
+    <div class="b b-img" style="--m:15/2/22/10;--d:13/17/23/24;--z:2">
+      <img style="object-position:33.9% 49.6%" src="assets/hl-room-view.webp" alt="Guestroom opening onto an ocean-view balcony" loading="lazy" width="1000" height="516">
+    </div>
+    <div class="b card" style="--m:23/2/30/10;--d:1/4/13/11;--z:1;--inset:6%">
+      <h4><strong>Irreplaceable Oceanfront Location on Daytona Beach Shores</strong></h4>
+      <p>Situated on a premier stretch of Daytona Beach Shores, the Hyatt Place benefits from an irreplaceable oceanfront location that provides guests with direct beach access and uninterrupted Atlantic views. Unlike the more congested core of Daytona Beach, Daytona Beach Shores offers a more relaxed and upscale environment.</p>
+      <p>The Property&rsquo;s positioning enables it to consistently capture leisure and event-driven demand while standing out through its direct beachfront accessibility. This unique combination of oceanfront location and proximity to Daytona&rsquo;s signature demand drivers establishes the Hotel as a highly competitive lodging option within the market.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================= highlight — attractions -->
+<section class="sec sec-navy sec-bg" id="hl-events"
+         style="--bg:url('assets/events-arch.webp');--ov:.45;--ov-c:var(--navy)">
+  <div class="fe" style="--rows-m:44;--rows-d:28">
+    <div class="b b-img" style="--m:1/2/7/10;--d:9/4/19/14;--z:2">
+      <img src="assets/ev-speedway.webp" alt="Daytona International Speedway" loading="lazy" width="1200" height="800">
+    </div>
+    <div class="b card" style="--m:19/2/21/10;--d:9/14/19/24;--z:1;--inset:3%">
+      <h4><strong>Robust Attractions &amp; Year-Round Events</strong></h4>
+      <p>Daytona Beach has evolved into a multifaceted destination that appeals to a wide spectrum of travelers. In addition to its renowned beaches, the area features a diverse lineup of attractions including the Ocean Center Convention Center, currently undergoing a $40 million renovation, Daytona Lagoon Waterpark, Ponce Inlet Lighthouse &amp; Museum, Main Street Pier, and numerous golf courses and nature preserves. This breadth of entertainment options creates a strong foundation of recurring leisure and family demand.</p>
+      <p>The market also benefits from a packed annual calendar of nationally recognized events that drive substantial repeat visitation. Highlights include the Daytona 500, Bike Week, Biketoberfest, Jeep Beach, Coke Zero Sugar 400, collegiate cheer and dance championships, spring break gatherings, and a variety of cultural festivals. These events draw hundreds of thousands of visitors each year, ensuring robust compression periods and reliable demand spikes for local lodging.</p>
+    </div>
+    <div class="b b-img" style="--m:7/2/13/10;--d:19/4/26/11;--z:3">
+      <img src="assets/ev-bike-week.webp" alt="Motorcycles lining Main Street during Daytona Beach Bike Week" loading="lazy" width="900" height="506">
+    </div>
+    <div class="b b-img b-fit" style="--m:13/2/19/10;--d:26/4/29/11;--z:6">
+      <img src="assets/logo-bike-week-2026.webp" alt="Bike Week 2026, Daytona Beach, Florida" loading="lazy" width="150" height="173">
+    </div>
+    <div class="b b-img" style="--m:21/2/27/10;--d:19/11/26/17;--z:4">
+      <img src="assets/ev-cheer.webp" alt="Collegiate cheer and dance championships at the Daytona Beach Bandshell" loading="lazy" width="900" height="600">
+    </div>
+    <div class="b b-img b-fit" style="--m:27/2/33/10;--d:26/11/29/17;--z:7">
+      <img src="assets/logo-nca.webp" alt="National Cheerleaders Association" loading="lazy" width="250" height="250">
+    </div>
+    <div class="b b-img" style="--m:33/2/39/10;--d:19/17/26/24;--z:5">
+      <img src="assets/ev-jeep-beach.webp" alt="Jeeps parked on the sand during Jeep Beach" loading="lazy" width="900" height="412">
+    </div>
+    <div class="b b-img b-fit" style="--m:39/2/45/10;--d:26/18/29/23;--z:8">
+      <img src="assets/logo-jeep-beach-2026.webp" alt="Jeep Beach 2026 — Celebrating America's 250th" loading="lazy" width="600" height="222">
+    </div>
+  </div>
+</section>
+
+<!-- ==================================================== highlight — upside -->
+<section class="sec sec-bg sec-px" id="hl-upside" data-px="0.25" data-px-dir="out"
+         style="--bg:url('assets/upside-pool.webp');--bg-pos:50% 100%;--ov:.2;--ov-c:var(--cream);--py0:4%">
+  <div class="fe" style="--rows-m:6;--rows-d:17">
+    <div class="b" style="--m:1/2/3/10;--d:1/4/7/24;--z:1">
+      <h4><strong>Incredible Upside Potential</strong></h4>
+      <p>Anchored by its highly coveted Atlantic oceanfront location, the Hotel presents a compelling opportunity for a new owner to unlock significant upside through a targeted renovation program, repositioning the asset with refreshed guestrooms and updated public areas. With a strong base of year-round leisure demand and a robust calendar of recurring events, the Hotel is well positioned to close the performance gap with its comp set peers. Aligning the Property&rsquo;s product quality with its premier beachfront setting would allow it to capture higher-rated demand, drive meaningful ADR growth, and materially improve RevPAR penetration over historical levels.</p>
+      <h4><strong>Optimal Offering &ndash; Fee Simple, Unencumbered by Management</strong></h4>
+      <p>The Property is offered fee simple and free and clear of existing management and financing, affording new ownership maximum optionality in the future operation and capitalization of the Hotel.</p>
+    </div>
+    <div class="b b-btn" style="--m:3/2/5/10;--d:16/6/18/13;--z:3">
+      <a class="btn" href="assets/Hyatt-Place-Daytona-Beach-Oceanfront-CA.docx" download>DOWNLOAD CONFIDENTIALITY AGREEMENT</a>
+    </div>
+    <div class="b b-btn" style="--m:5/2/7/10;--d:16/15/18/22;--z:4">
+      <a class="btn" href="https://secure.rightsignature.com/templates/2ac07558-9176-4d82-9b18-1d2df0c0deec/template-signer-link/49aea1381ead6e0527bd6de7826555d0" target="_blank" rel="noopener">SIGN CONFIDENTIALITY AGREEMENT</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================================================================ footer -->
+<footer class="sec sec-sm sec-footer" id="contact">
+  <div class="fe" style="--rows-m:12;--rows-d:10">
+    <div class="b b-footer-logo" style="--m:1/2/7/10;--d:1/4/11/8;--z:2">
+      <img src="assets/hwe-white.svg" alt="Hodges Ward Elliott" width="214" height="82" loading="lazy">
+    </div>
+    <div class="b" style="--m:7/2/13/10;--d:1/9/11/21;--z:1">
+      <div class="contacts">
+        <section class="contacts-group" aria-labelledby="reps">
+          <h3 class="contacts-header" id="reps">Exclusive Representatives</h3>
+          <p class="contact"><b>Preston Reid</b><br>Managing Director<br><a href="mailto:preid@hodgeswardelliott.com">preid@hodgeswardelliott.com</a></p>
+          <p class="contact"><b>Rudy Reudelhuber</b><br>Managing Director<br><a href="mailto:rreudelhuber@hodgeswardelliott.com">rreudelhuber@hodgeswardelliott.com</a></p>
+          <p class="contact"><b>Celina Nowicki</b><br>Associate<br><a href="mailto:cnowicki@hodgeswardelliott.com">cnowicki@hodgeswardelliott.com</a></p>
+        </section>
+        <section class="contacts-group" aria-labelledby="fin">
+          <h3 class="contacts-header" id="fin">Acquisition Financing Advisors</h3>
+          <p class="contact"><b>Michael Britvan</b><br>Managing Director<br><a href="mailto:mbritvan@hodgeswardelliott.com">mbritvan@hodgeswardelliott.com</a></p>
+          <p class="contact"><b>Coby Campbell</b><br>Senior Vice President<br><a href="mailto:ccampbell@hodgeswardelliott.com">ccampbell@hodgeswardelliott.com</a></p>
+        </section>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function () {
+  'use strict';
+  /* Background zoom on [data-px] sections: the hero, the Investment
+     Highlights band and #hl-upside. The photograph scales from 1 to 1.15 (or
+     1 + the value of data-px — the band uses 0.25, so 1.25) and drifts
+     slower than the page. data-px-dir="out" runs the zoom the other way, from
+     1 + data-px down to 1 (#hl-upside: 1.25 to 1.00). rAF-throttled, skips sections that are off screen,
+     and not installed at all under prefers-reduced-motion, which leaves every
+     layer at scale(1).
+
+     Progress runs 0 to 1. A section on screen at load (the hero) is driven by
+     how far it has scrolled past: 0 on load, 1 once a full section height has
+     gone by. Any other section runs 0 as its top meets the viewport bottom and
+     1 as its bottom leaves the top, so it zooms while it crosses the screen.
+     A zoom-out section finishes sooner, as its bottom meets the viewport
+     bottom: #hl-upside is second-last on the page, and the usual mapping would
+     run out of page at 0.82 and leave the photograph at 1.045 rather than 1. */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var secs = [].slice.call(document.querySelectorAll('[data-px]'));
+  if (!secs.length) return;
+  var ZOOM = 0.15, DRIFT = 0.16, queued = false;
+  function update() {
+    queued = false;
+    var vh = window.innerHeight;
+    secs.forEach(function (sec) {
+      var r = sec.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) return;
+      var atLoad = r.top + scrollY < vh;
+      var out = sec.getAttribute('data-px-dir') === 'out';
+      var p = atLoad ? -r.top / r.height
+            : out ? (vh - r.top) / r.height
+            : (vh - r.top) / (vh + r.height);
+      p = Math.min(Math.max(p, 0), 1);
+      /* The hero only drifts down (it starts at rest); a mid-page band drifts
+         across its centre. Both stay inside the layer's 16% overhang. */
+      var py = atLoad ? p * r.height * DRIFT : (p - 0.5) * r.height * DRIFT;
+      var zoom = parseFloat(sec.getAttribute('data-px')) || ZOOM;
+      sec.style.setProperty('--pz', (1 + (out ? 1 - p : p) * zoom).toFixed(4));
+      sec.style.setProperty('--py', py.toFixed(1) + 'px');
+    });
+  }
+  function onScroll() { if (!queued) { queued = true; requestAnimationFrame(update); } }
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  update();
+
+})();
+</script>
+</body>
+</html>
