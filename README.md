@@ -22,7 +22,7 @@ assets/
   *.docx            confidentiality agreement
 ```
 
-Section anchors: `#hero #overview #property #highlights #hl-location #hl-events #hl-upside #contact`
+Section anchors: `#hero #overview #property #highlights #hl-location #hl-events #hl-upside #confidentiality #contact`
 
 ### Live
 
@@ -122,7 +122,6 @@ re-fitted for it (the hero name has since moved into the logo):
 
 - **The glass-band label** is Poppins Light at the template's size.
 
-The CA buttons still fit on one line from 1440 up; at 1024 they wrap to two.
 
 ## Colour scheme
 
@@ -139,11 +138,35 @@ snapshot of 3 Dec 2025.
 | `--sand` | `#d3b782` | property-table rules, contact-group rules |
 | `--charcoal` | `#282828` | body copy |
 
-Buttons follow hyatt.com: square, 1px border, uppercase, 14px. They are filled
-navy rather than outline-only so they read on the pool photograph. The photo
-overlays are tinted navy (`#hl-events` .45; `#highlights` has none) and cream on
+Every CA button is the CTA section's pair (see below): a sand **Sign CA
+Online** and an outline **Download CA (DOCX)**, 11px uppercase at .18em, 240px
+minimum. In `#overview` and `#hl-upside` each pair is one centred row in a grid
+block spanning both of the source's button cells. On those light grounds
+(`.cta-btns.on-light`) the outline is navy over a 70% cream fill, which keeps it
+legible over the pool water, and fills navy on hover. The photo overlays are
+tinted navy (`#hl-events` .45; `#highlights` has none) and cream on
 `#hl-upside`. Fonts are unchanged; hyatt.com's Trend Sans One and Memphis are
 proprietary.
+
+## CTA section
+
+`#confidentiality`, between `#hl-upside` and the footer, is the **HWE CTA
+Section** template (`../../xx Templates xx/cta-section`, from the Hyatt House
+Lincoln Park build): "Access the / *Offering Memorandum*", the template's
+paragraph, and Sign CA Online / Download CA (DOCX). The spacing, 50-character
+measure, headline scale, `.75` dimming of the italic line and the phone stacking
+are the template's. Adapted to this site:
+
+- The headline keeps the template's Cormorant Garamond Light (roman, and
+  italic for the second line), the one non-Poppins type on the page. The
+  paragraph and buttons are Poppins instead of the template's Jost.
+- The hyatt.com palette: a teal band, so it separates from the navy footer,
+  with a sand primary button and a cream outline secondary.
+- This deal's RightSignature link and bundled CA; the download saves as
+  "Hyatt Place Daytona Beach Oceanfront - Confidentiality Agreement.docx".
+- The template's `cta-section.js` scroll reveal is folded into the page's own
+  script. The hidden state is applied only by script and skipped under
+  reduced motion.
 
 ## Textured ground
 
@@ -156,7 +179,7 @@ opacity off the copy; the section's `isolation: isolate` limits the blend to
 the cream. Under `@media (hover:none)` it scrolls instead, since iOS Safari
 ignores `fixed` and repaints badly under it.
 
-`#property` and `#hl-location` take the white version, `assets/texture-concrete-wall-white.png`
+`#property`, `#hl-location` and `#confidentiality` take the white version, `assets/texture-concrete-wall-white.png`
 (from `xx Patterns xx/concrete-wall-white.png`, the same 520px speckle in
 near-white), with the same pinning and tiling, at 70% opacity, and
 `mix-blend-mode: screen` rather than multiply. Multiply can only darken, so
@@ -189,11 +212,6 @@ column under 900px.
 **Address wraps below 1300px.** The two unbreakable address lines make the
 table 389px wide. On the source it scrolls sideways in a 309px column at 1024
 and a 330px one on a phone; here the value wraps instead.
-
-**CA button padding is 8px, not 35px.** Instrument Sans sets "DOWNLOAD
-CONFIDENTIALITY AGREEMENT" 15px wider than Aktiv Grotesk, and with the source's
-35px sides it wrapped at 1440. At 8px it stays on one line from 1440 up, as the
-source does, and wraps cleanly below.
 
 **Email fix.** The source's link for Rudy Reudelhuber is
 `mailto:rreudelhuber @hodgeswardelliott.com`, with a space; it is corrected here.
