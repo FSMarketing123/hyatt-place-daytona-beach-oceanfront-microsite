@@ -526,6 +526,10 @@ p + h4{margin-top:32px}
 @media (hover:none){
   .ev-label{opacity:1;transform:none}
 }
+/* Phones: the three tiles stand 330px tall (they took their height from six
+   24px grid rows, about 199px). The events copy now sits straight under the
+   speedway photo, set by the card's own --m. */
+@media (max-width:767px){.ev{height:330px}}
 @media (prefers-reduced-motion:reduce){
   .ev-photo,.ev-veil,.ev-logo,.ev-label{transition:none}
   .ev:hover .ev-photo,.ev:focus-visible .ev-photo{transform:none}
@@ -673,17 +677,17 @@ p + h4{margin-top:32px}
     <div class="b b-img" style="--m:1/2/7/10;--d:9/4/19/14;--z:2">
       <img src="assets/ev-speedway.webp" alt="Daytona International Speedway" loading="lazy" width="1200" height="800">
     </div>
-    <div class="b card" style="--m:14/2/16/10;--d:9/14/19/24;--z:1;--inset:3%">
+    <div class="b card" style="--m:7/2/9/10;--d:9/14/19/24;--z:1;--inset:3%">
       <h4><strong>Robust Attractions &amp; Year-Round Events</strong></h4>
       <p>Daytona Beach has evolved into a multifaceted destination that appeals to a wide spectrum of travelers. In addition to its renowned beaches, the area features a diverse lineup of attractions including the Ocean Center Convention Center, currently undergoing a $40 million renovation, Daytona Lagoon Waterpark, Ponce Inlet Lighthouse &amp; Museum, Main Street Pier, and numerous golf courses and nature preserves. This breadth of entertainment options creates a strong foundation of recurring leisure and family demand.</p>
       <p>The market also benefits from a packed annual calendar of nationally recognized events that drive substantial repeat visitation. Highlights include the Daytona 500, Bike Week, Biketoberfest, Jeep Beach, Coke Zero Sugar 400, collegiate cheer and dance championships, spring break gatherings, and a variety of cultural festivals. These events draw hundreds of thousands of visitors each year, ensuring robust compression periods and reliable demand spikes for local lodging.</p>
     </div>
-    <button class="b ev" type="button" data-ev="bike" aria-haspopup="dialog" style="--m:7/2/13/10;--d:19/4/26/11;--z:3">
+    <button class="b ev" type="button" data-ev="bike" aria-haspopup="dialog" style="--m:9/2/15/10;--d:19/4/26/11;--z:3">
       <img class="ev-photo" src="assets/ev-bike-week.webp" alt="" loading="lazy" width="900" height="506">
       <span class="ev-veil"></span>
       <img class="ev-logo ev-logo-bike" src="assets/logo-bike-week-2026.webp" alt="Bike Week 2026, Daytona Beach, Florida" loading="lazy" width="150" height="173">
     </button>
-    <p class="b ev-label" style="--m:13/2/14/10;--d:26/4/29/11;--z:3">Daytona Beach Bike Week<span class="ev-more">View details</span></p>
+    <p class="b ev-label" style="--m:15/2/16/10;--d:26/4/29/11;--z:3">Daytona Beach Bike Week<span class="ev-more">View details</span></p>
     <button class="b ev" type="button" data-ev="cheer" aria-haspopup="dialog" style="--m:16/2/22/10;--d:19/11/26/17;--z:4">
       <img class="ev-photo" src="assets/ev-cheer.webp" alt="" loading="lazy" width="900" height="600">
       <span class="ev-veil"></span>

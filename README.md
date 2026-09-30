@@ -217,8 +217,9 @@ cannot drift apart; the blurbs live in the page script, keyed by `data-ev`.
 **The three blurbs are draft copy and need confirming before they are relied
 on.**
 
-On phones the order is speedway, Bike Week and its label, the events copy,
-then cheer and Jeep Beach, each with its label.
+On phones the order is the speedway photo, the events copy, then Bike Week,
+cheer and Jeep Beach, each with its label, and the three tiles stand 330px
+tall.
 
 ## Textured ground
 
