@@ -154,13 +154,14 @@ proprietary.
 `#confidentiality`, between `#hl-upside` and the footer, is the **HWE CTA
 Section** template (`../../xx Templates xx/cta-section`, from the Hyatt House
 Lincoln Park build): "Access the / *Offering Memorandum*", the template's
-paragraph, and Sign CA Online / Download CA (DOCX). The spacing, 50-character
-measure, headline scale, `.75` dimming of the italic line and the phone stacking
+paragraph, and Sign CA Online / Download CA (DOCX). The spacing, headline scale, `.75` dimming of the italic line and the phone stacking
 are the template's. Adapted to this site:
 
 - The headline keeps the template's Cormorant Garamond Light (roman, and
   italic for the second line), the one non-Poppins type on the page. The
   paragraph and buttons are Poppins instead of the template's Jost.
+- The paragraph is capped at 60ch rather than 50ch, with balanced wrapping, so
+  it sets on two lines at desktop widths.
 - The hyatt.com palette: a teal band, so it separates from the navy footer,
   with a sand primary button and a cream outline secondary.
 - This deal's RightSignature link and bundled CA; the download saves as
@@ -168,6 +169,16 @@ are the template's. Adapted to this site:
 - The template's `cta-section.js` scroll reveal is folded into the page's own
   script. The hidden state is applied only by script and skipped under
   reduced motion.
+
+## Hero glass
+
+The hero card is liquid frosted glass: a 22px backdrop blur that also lifts
+saturation (180%) and brightness (108%); a white fill that runs from 55% at the
+top-left to 30% at the bottom-right; a 1px white rim with inset highlights top
+and bottom and a soft inner glow; a curved specular sheen across the top third
+(`::before`, screen-blended); and a soft navy-tinted drop shadow. Radius stays
+45px (32px on phones). Where `backdrop-filter` is unsupported the fill falls
+back to solid white at 82%, so the logo stays legible.
 
 ## Textured ground
 
@@ -195,7 +206,7 @@ lockup, `assets/logo-hyatt-place-daytona-horz.svg`, from
 `xx Logos xx/Hyatt-Place-Daytona-Beach-Oceanfront-Horz-logo.svg`. The export
 was stripped of its Illustrator metadata (547KB → 38KB, artwork unchanged) and
 its viewBox trimmed to the artwork. It is the page's `h1`. The card behind it is
-landscape now — ten columns by eight rows, white at 75% — with the logo
+landscape now — ten columns by eight rows, in liquid frosted glass — with the logo
 centred: 439×214 in a 551×310 card at 1440, 245×119 in 330×234 on a phone.
 
 **Mobile hero card spans its content.** Under 768px the source's white card
@@ -267,6 +278,15 @@ photo also sits 4% of its layer lower (`--py0:4%`, ~66px at 1440, and up to
 166px lower once the drift is added), so the copy lies over open sky and the
 pool-deck umbrellas stay below it. Coverage was checked at every stage: at least
 34px of photo past each edge at 1440, and 28px on a phone.
+
+
+**On phones only**, `#hl-upside`'s own photograph fades to 10% over a white ground
+(and a white wash in place of the cream one), so the copy sits on a near-plain
+ground rather than over the pool deck, and the same
+photograph appears at full strength in its own frame below the copy
+(`.upside-photo`, 330×186 at 375), easing in with the CTA section's reveal. The
+frame is decorative, since the section photo already stands for it, so it is
+`aria-hidden`. It is `display:none` from 768px up, and desktop is unchanged.
 
 The photograph is on `#hero::before`, which script cannot address, so the
 handler writes `--pz` and `--py` on the section and the layer inherits them —
