@@ -438,6 +438,52 @@ p + h4{margin-top:32px}
   .upside-photo{display:block;aspect-ratio:2400/1353;align-self:start}
 }
 
+/* ------------------------------------------------------ hero bubble button
+   The glass card is a button. A transparent <button> covers the card's grid
+   area, above the logo, so the whole card is one target; the card itself
+   stays a separate layer and reacts through :has(). A click releases glass
+   bubbles in the nine colours of the logo's circles from behind the card:
+   they rise, spread in every direction and fade.
+
+   The bubble layer sits between the photograph (z-index -1) and the card
+   (z-index 1), so each bubble starts hidden behind the card, shows blurred
+   through the glass, and clears its edge as it travels. */
+.hero-hit{
+  appearance:none;border:0;padding:0;margin:0;background:transparent;
+  border-radius:45px;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.hero-hit:focus-visible{outline:2px solid #fff;outline-offset:6px}
+@media (max-width:767px){.hero-hit{border-radius:32px}}
+.hero-card{transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease}
+@media (hover:hover){
+  .fe:has(.hero-hit:hover) .hero-card{
+    transform:translateY(-3px) scale(1.01);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.95),
+      inset 0 -1px 0 rgba(255,255,255,.35),
+      inset 0 0 32px rgba(255,255,255,.34),
+      0 30px 70px rgba(20,32,44,.32),
+      0 2px 6px rgba(20,32,44,.12);
+  }
+}
+.fe:has(.hero-hit:active) .hero-card{transform:scale(.985);transition-duration:.12s}
+/* Reduced motion: no bubbles, just a brief glow on the card. */
+.hero-card.glow{box-shadow:0 0 0 3px rgba(255,255,255,.7), 0 0 60px rgba(255,255,255,.55)}
+
+.bubbles{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bubble{
+  position:absolute;left:0;top:0;border-radius:50%;
+  width:var(--d);height:var(--d);margin:calc(var(--d) / -2) 0 0 calc(var(--d) / -2);
+  /* Glass: a specular glint top-left over a tinted body that deepens toward
+     the rim, a bright hairline edge, and an inner glow. */
+  background:
+    radial-gradient(circle at 30% 28%, rgba(255,255,255,.9) 0 6%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 28%),
+    radial-gradient(circle at 50% 55%, color-mix(in srgb, var(--c) 68%, transparent) 0 50%, color-mix(in srgb, var(--c) 95%, transparent) 100%);
+  border:1px solid rgba(255,255,255,.65);
+  box-shadow:inset 0 0 calc(var(--d) / 4) rgba(255,255,255,.45), 0 3px 10px rgba(20,32,44,.16);
+  will-change:transform,opacity;
+}
+
 </style>
 </head>
 <body>
@@ -448,11 +494,14 @@ p + h4{margin-top:32px}
 <section class="sec sec-lg sec-navy sec-bg sec-px" id="hero" data-px
          style="--bg:url('assets/hero-pool.webp');--ov:.25">
   <a class="hwe-mast" href="#hero"><img src="assets/hwe-white.svg" alt="Hodges Ward Elliott" width="153" height="59"></a>
+  <div class="bubbles" aria-hidden="true"></div>
   <div class="fe" style="--rows-m:10;--rows-d:10">
     <div class="b hero-card" style="--m:2/2/9/10;--d:2/9/10/19;--z:1"></div>
     <h1 class="b b-hero-logo" style="--m:3/3/8/9;--d:3/10/9/18;--z:3">
       <img src="assets/logo-hyatt-place-daytona-horz.svg" alt="Hyatt Place Daytona Beach Oceanfront — Daytona Beach Shores, FL" width="1331" height="649">
     </h1>
+    <button class="b hero-hit" type="button" style="--m:2/2/9/10;--d:2/9/10/19;--z:4"
+            aria-label="Release bubbles in the Hyatt Place colours"></button>
   </div>
 </section>
 
@@ -692,6 +741,64 @@ p + h4{margin-top:32px}
   addEventListener('resize', onScroll);
   update();
 
+})();
+
+/* Hero bubbles. Each press releases BURST glass bubbles from random points
+   inside the card. Each rises first, then carries on outward at its own angle,
+   so the cloud lifts off the card and opens into a ring; it grows a little on
+   the way and fades out over 1.6-2.8s. Web Animations, removed on finish, and
+   capped at MAX in flight so a run of clicks cannot pile up. */
+(function () {
+  'use strict';
+  var hit = document.querySelector('.hero-hit');
+  var layer = document.querySelector('.bubbles');
+  var card = document.querySelector('.hero-card');
+  if (!hit || !layer || !card) return;
+  var COLOURS = ['#fed208', '#231f20', '#f58023',   /* the logo's circles, */
+                 '#7582bf', '#b2aa7e', '#d6e03e',   /* row by row          */
+                 '#51b3cf', '#231f20', '#74c168'];
+  var BURST = 48, MAX = 200;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var rnd = function (a, b) { return a + Math.random() * (b - a); };
+
+  hit.addEventListener('click', function () {
+    if (reduce.matches || !layer.animate) {
+      card.classList.add('glow');
+      setTimeout(function () { card.classList.remove('glow'); }, 450);
+      return;
+    }
+    var L = layer.getBoundingClientRect(), C = card.getBoundingClientRect();
+    var reach = Math.max(L.width, L.height) * 0.45;
+    var n = Math.min(BURST, MAX - layer.childElementCount);
+    for (var i = 0; i < n; i++) {
+      var b = document.createElement('span');
+      b.className = 'bubble';
+      var d = Math.round(rnd(8, 34));
+      b.style.setProperty('--d', d + 'px');
+      b.style.setProperty('--c', COLOURS[(Math.random() * COLOURS.length) | 0]);
+      var x = C.left - L.left + rnd(0.12, 0.88) * C.width;
+      var y = C.top - L.top + rnd(0.2, 0.85) * C.height;
+      var a = rnd(0, Math.PI * 2), dist = rnd(0.45, 1) * reach;
+      var rise = rnd(40, 110);
+      var dx = Math.cos(a) * dist, dy = Math.sin(a) * dist - rise * 1.6;
+      var sway = rnd(-18, 18);
+      layer.appendChild(b);
+      var t = function (px, py, sc) {
+        return 'translate(' + px.toFixed(1) + 'px,' + py.toFixed(1) + 'px) scale(' + sc + ')';
+      };
+      b.animate([
+        { transform: t(x, y, 0.3), opacity: 0 },
+        { transform: t(x + sway * 0.3, y - rise, 0.9), opacity: 0.95, offset: 0.18 },
+        { transform: t(x + dx * 0.55 + sway, y + dy * 0.55, 1.05), opacity: 0.85, offset: 0.6 },
+        { transform: t(x + dx, y + dy, 1.15), opacity: 0 }
+      ], {
+        duration: rnd(1600, 2800),
+        delay: rnd(0, 180),
+        easing: 'cubic-bezier(.2,.7,.3,1)',
+        fill: 'backwards'
+      }).onfinish = (function (el) { return function () { el.remove(); }; })(b);
+    }
+  });
 })();
 </script>
 </body>

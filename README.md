@@ -180,6 +180,22 @@ and bottom and a soft inner glow; a curved specular sheen across the top third
 45px (32px on phones). Where `backdrop-filter` is unsupported the fill falls
 back to solid white at 82%, so the logo stays legible.
 
+## Hero bubbles
+
+The hero card is a button. A transparent `<button class="hero-hit">` covers the
+card's grid area above the logo, so the whole card is one target; the card lifts
+on hover and presses in on click through `:has()`. Each press releases 48 glass
+bubbles, 8–34px, in the colours of the logo's nine circles: `#fed208`,
+`#231f20` (×2), `#f58023`, `#7582bf`, `#b2aa7e`, `#d6e03e`, `#51b3cf` and
+`#74c168`, read from the SVG.
+
+Bubbles start at random points inside the card, on a layer (`.bubbles`) between
+the photograph and the card. Each first shows blurred through the glass, then
+rises, spreads out at its own angle and fades over 1.6–2.8s. They run on the Web
+Animations API and are removed when they finish; at most 200 are in flight, so
+repeated clicks cannot pile up. Under `prefers-reduced-motion` a press gives a
+brief glow on the card instead.
+
 ## Textured ground
 
 `#overview` carries a tiled concrete grain: `assets/texture-concrete-wall.png`,
