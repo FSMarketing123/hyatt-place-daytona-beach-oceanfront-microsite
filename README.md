@@ -13,7 +13,7 @@ GitHub Pages from `main`.
 
 ```
 index.html          single page, all sections
-CNAME.pending       custom domain — rename to CNAME at cutover
+CNAME               custom domain
 .nojekyll           bypass Jekyll processing
 assets/
   *.webp            photography, event logos, Hyatt Place colour mark
@@ -24,12 +24,18 @@ assets/
 
 Section anchors: `#hero #overview #property #highlights #hl-location #hl-events #hl-upside #contact`
 
-### Staging
+### Live
 
-The domain is still on Squarespace, so the CNAME is held as `CNAME.pending`.
-A committed `CNAME` would make GitHub Pages redirect the github.io preview back
-to the old site. At cutover: `git mv CNAME.pending CNAME`. Every asset path is
-relative, so the page serves the same from a `/repo/` subpath or the domain root.
+**https://hyattplacedaytonabeachoceanfront.hodgeswardelliott.com/**: GitHub
+Pages from `main` at root. DNS moved from Squarespace (`ext-cust.squarespace.com`)
+to a CNAME for `fsmarketing123.github.io` at Hover on 30 Sep 2026, and `CNAME`
+committed the same day.
+
+It was staged first at `fsmarketing123.github.io/hyatt-place-daytona-beach-oceanfront-microsite/`
+with the CNAME held back as `CNAME.pending`. A committed CNAME makes Pages
+redirect the github.io address to the domain, which would have shown the old
+Squarespace site. Every asset path is relative, so the page serves the same
+from the subpath or the domain root.
 
 ### Local preview
 
