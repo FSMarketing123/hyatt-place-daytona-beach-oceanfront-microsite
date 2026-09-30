@@ -140,8 +140,9 @@ snapshot of 3 Dec 2025.
 
 Every CA button is the CTA section's pair (see below): a sand **Sign CA
 Online** and an outline **Download CA (DOCX)**, 11px uppercase at .18em, 240px
-minimum. In `#overview` and `#hl-upside` each pair is one centred row in a grid
-block spanning both of the source's button cells. On those light grounds
+minimum. In `#overview` the pair is one centred row in a grid block spanning
+both of the source's button cells. `#hl-upside` has none: the CTA section
+follows it directly. On those light grounds
 (`.cta-btns.on-light`) the outline is navy over a 70% cream fill, which keeps it
 legible over the pool water, and fills navy on hover. The photo overlays are
 tinted navy (`#hl-events` .45; `#highlights` has none) and cream on
