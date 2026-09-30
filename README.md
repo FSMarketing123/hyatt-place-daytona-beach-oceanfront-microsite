@@ -196,6 +196,30 @@ Animations API and are removed when they finish; at most 200 are in flight, so
 repeated clicks cannot pile up. Under `prefers-reduced-motion` a press gives a
 brief glow on the card instead.
 
+## Event tiles
+
+The three event photographs in `#hl-events` (Bike Week, the collegiate cheer and
+dance championship, Jeep Beach) are buttons. Each carries its own logo, moved
+up from the row beneath and enlarged: Bike Week at 150×173 (its native size,
+so it stays sharp), NCA 178×178, and Jeep Beach 321×119, re-exported at 1200px
+from `Copy-of-Celebrating-Americas250th.png` for the larger display. A beige veil
+(`rgba(246,237,216,.72)`) sits between photo and logo.
+
+On hover or keyboard focus the veil and logo fade, the photo eases up to 1.05×
+and comes up clear, and a label, the event name plus "View details", rises into
+the row beneath where the logos used to sit. Touch screens have no hover, so
+there the labels are always shown.
+
+A click opens a native `<dialog>`: the photo, the event's logo centred below it,
+the title and a short blurb. It closes with ×, Esc or a click outside, and
+focus returns to the tile. The photo and logo are read off the tile, so they
+cannot drift apart; the blurbs live in the page script, keyed by `data-ev`.
+**The three blurbs are draft copy and need confirming before they are relied
+on.**
+
+On phones the order is speedway, Bike Week and its label, the events copy,
+then cheer and Jeep Beach, each with its label.
+
 ## Textured ground
 
 `#overview` carries a tiled concrete grain: `assets/texture-concrete-wall.png`,

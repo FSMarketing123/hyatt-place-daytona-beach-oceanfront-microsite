@@ -484,6 +484,80 @@ p + h4{margin-top:32px}
   will-change:transform,opacity;
 }
 
+/* ------------------------------------------------------------ event tiles
+   The three event photographs in #hl-events. Each is a button: its logo sits
+   on the photo, enlarged, over a beige veil so the mark reads. On hover (or
+   keyboard focus) the logo and veil fade, the photo comes up clear, and a
+   label rises in the space under the photo where the logos used to sit. A
+   click opens a popup with the photo, the logo below it and a short blurb.
+   Touch screens have no hover, so there the labels are always shown and a tap
+   opens the popup. */
+.ev{
+  appearance:none;border:0;padding:0;margin:0;background:none;cursor:pointer;
+  position:relative;overflow:hidden;display:block;
+  -webkit-tap-highlight-color:transparent;
+}
+.ev-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.ev-veil{position:absolute;inset:0;background:rgba(246,237,216,.72);
+  transition:opacity .45s ease}
+.ev-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:auto;height:auto;object-fit:contain;
+  filter:drop-shadow(0 2px 6px rgba(40,62,83,.18));
+  transition:opacity .45s ease, transform .45s ease}
+/* Sized per mark: roughly 60% of the tile height, and the Bike Week mark held
+   near its native 173px so it does not soften. */
+.ev-logo-bike{height:min(64%, 173px)}
+.ev-logo-cheer{height:min(66%, 190px)}
+.ev-logo-jeep{width:min(84%, 360px)}
+.ev-label{
+  margin:0;padding-top:14px;text-align:center;color:var(--cream);
+  font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.35;
+  opacity:0;transform:translateY(-6px);transition:opacity .4s ease, transform .4s ease;
+  pointer-events:none;
+}
+.ev-more{display:block;margin-top:6px;font-size:11px;font-weight:500;letter-spacing:.18em;
+  color:var(--sand)}
+.ev:hover .ev-photo,.ev:focus-visible .ev-photo{transform:scale(1.05)}
+.ev:hover .ev-veil,.ev:focus-visible .ev-veil{opacity:0}
+.ev:hover .ev-logo,.ev:focus-visible .ev-logo{opacity:0;transform:translate(-50%,-50%) scale(.92)}
+.ev:hover + .ev-label,.ev:focus-visible + .ev-label{opacity:1;transform:none}
+.ev:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+@media (hover:none){
+  .ev-label{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .ev-photo,.ev-veil,.ev-logo,.ev-label{transition:none}
+  .ev:hover .ev-photo,.ev:focus-visible .ev-photo{transform:none}
+}
+
+/* Popup: native <dialog>, so Esc, focus trapping and focus return come free.
+   Photo on top, the event's logo centred below it, then the title and blurb. */
+.ev-pop{
+  border:0;padding:0;border-radius:20px;overflow:hidden;
+  width:min(92vw, 720px);max-height:92vh;
+  background:var(--cream);color:var(--charcoal);
+  box-shadow:0 30px 80px rgba(10,20,30,.45);
+}
+.ev-pop::backdrop{background:rgba(22,34,46,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.ev-pop[open]{animation:ev-pop-in .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes ev-pop-in{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.ev-pop[open]{animation:none}}
+.ev-pop-photo{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.ev-pop-body{padding:24px clamp(22px,5vw,44px) 34px;text-align:center;overflow:auto}
+.ev-pop-logo{display:block;margin:0 auto 18px;height:96px;width:auto;max-width:70%;object-fit:contain}
+.ev-pop-logo.is-wide{height:auto;width:min(70%, 300px)}
+.ev-pop h3{margin:0 0 10px;font-size:20px;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.06em}
+.ev-pop-text{margin:0 auto;max-width:56ch;font-size:15.5px;line-height:1.75}
+.ev-pop-close{
+  position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.7);background:rgba(40,62,83,.55);color:#fff;
+  font:400 24px/1 var(--body);cursor:pointer;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+.ev-pop-close:hover{background:rgba(40,62,83,.8)}
+.ev-pop-close:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
 </style>
 </head>
 <body>
@@ -595,33 +669,33 @@ p + h4{margin-top:32px}
 <!-- ================================================= highlight — attractions -->
 <section class="sec sec-navy sec-bg" id="hl-events"
          style="--bg:url('assets/events-arch.webp');--ov:.45;--ov-c:var(--navy)">
-  <div class="fe" style="--rows-m:44;--rows-d:28">
+  <div class="fe" style="--rows-m:30;--rows-d:28">
     <div class="b b-img" style="--m:1/2/7/10;--d:9/4/19/14;--z:2">
       <img src="assets/ev-speedway.webp" alt="Daytona International Speedway" loading="lazy" width="1200" height="800">
     </div>
-    <div class="b card" style="--m:19/2/21/10;--d:9/14/19/24;--z:1;--inset:3%">
+    <div class="b card" style="--m:14/2/16/10;--d:9/14/19/24;--z:1;--inset:3%">
       <h4><strong>Robust Attractions &amp; Year-Round Events</strong></h4>
       <p>Daytona Beach has evolved into a multifaceted destination that appeals to a wide spectrum of travelers. In addition to its renowned beaches, the area features a diverse lineup of attractions including the Ocean Center Convention Center, currently undergoing a $40 million renovation, Daytona Lagoon Waterpark, Ponce Inlet Lighthouse &amp; Museum, Main Street Pier, and numerous golf courses and nature preserves. This breadth of entertainment options creates a strong foundation of recurring leisure and family demand.</p>
       <p>The market also benefits from a packed annual calendar of nationally recognized events that drive substantial repeat visitation. Highlights include the Daytona 500, Bike Week, Biketoberfest, Jeep Beach, Coke Zero Sugar 400, collegiate cheer and dance championships, spring break gatherings, and a variety of cultural festivals. These events draw hundreds of thousands of visitors each year, ensuring robust compression periods and reliable demand spikes for local lodging.</p>
     </div>
-    <div class="b b-img" style="--m:7/2/13/10;--d:19/4/26/11;--z:3">
-      <img src="assets/ev-bike-week.webp" alt="Motorcycles lining Main Street during Daytona Beach Bike Week" loading="lazy" width="900" height="506">
-    </div>
-    <div class="b b-img b-fit" style="--m:13/2/19/10;--d:26/4/29/11;--z:6">
-      <img src="assets/logo-bike-week-2026.webp" alt="Bike Week 2026, Daytona Beach, Florida" loading="lazy" width="150" height="173">
-    </div>
-    <div class="b b-img" style="--m:21/2/27/10;--d:19/11/26/17;--z:4">
-      <img src="assets/ev-cheer.webp" alt="Collegiate cheer and dance championships at the Daytona Beach Bandshell" loading="lazy" width="900" height="600">
-    </div>
-    <div class="b b-img b-fit" style="--m:27/2/33/10;--d:26/11/29/17;--z:7">
-      <img src="assets/logo-nca.webp" alt="National Cheerleaders Association" loading="lazy" width="250" height="250">
-    </div>
-    <div class="b b-img" style="--m:33/2/39/10;--d:19/17/26/24;--z:5">
-      <img src="assets/ev-jeep-beach.webp" alt="Jeeps parked on the sand during Jeep Beach" loading="lazy" width="900" height="412">
-    </div>
-    <div class="b b-img b-fit" style="--m:39/2/45/10;--d:26/18/29/23;--z:8">
-      <img src="assets/logo-jeep-beach-2026.webp" alt="Jeep Beach 2026 — Celebrating America's 250th" loading="lazy" width="600" height="222">
-    </div>
+    <button class="b ev" type="button" data-ev="bike" aria-haspopup="dialog" style="--m:7/2/13/10;--d:19/4/26/11;--z:3">
+      <img class="ev-photo" src="assets/ev-bike-week.webp" alt="" loading="lazy" width="900" height="506">
+      <span class="ev-veil"></span>
+      <img class="ev-logo ev-logo-bike" src="assets/logo-bike-week-2026.webp" alt="Bike Week 2026, Daytona Beach, Florida" loading="lazy" width="150" height="173">
+    </button>
+    <p class="b ev-label" style="--m:13/2/14/10;--d:26/4/29/11;--z:3">Daytona Beach Bike Week<span class="ev-more">View details</span></p>
+    <button class="b ev" type="button" data-ev="cheer" aria-haspopup="dialog" style="--m:16/2/22/10;--d:19/11/26/17;--z:4">
+      <img class="ev-photo" src="assets/ev-cheer.webp" alt="" loading="lazy" width="900" height="600">
+      <span class="ev-veil"></span>
+      <img class="ev-logo ev-logo-cheer" src="assets/logo-nca.webp" alt="National Cheerleaders Association" loading="lazy" width="250" height="250">
+    </button>
+    <p class="b ev-label" style="--m:22/2/23/10;--d:26/11/29/17;--z:4">Collegiate Cheer &amp; Dance Championship<span class="ev-more">View details</span></p>
+    <button class="b ev" type="button" data-ev="jeep" aria-haspopup="dialog" style="--m:23/2/29/10;--d:19/17/26/24;--z:5">
+      <img class="ev-photo" src="assets/ev-jeep-beach.webp" alt="" loading="lazy" width="900" height="412">
+      <span class="ev-veil"></span>
+      <img class="ev-logo ev-logo-jeep" src="assets/logo-jeep-beach-2026.webp" alt="Jeep Beach 2026 — Celebrating America's 250th" loading="lazy" width="1200" height="444">
+    </button>
+    <p class="b ev-label" style="--m:29/2/30/10;--d:26/17/29/24;--z:5">Jeep Beach<span class="ev-more">View details</span></p>
   </div>
 </section>
 
@@ -652,6 +726,16 @@ p + h4{margin-top:32px}
     </div>
   </div>
 </section>
+
+<dialog class="ev-pop" id="ev-pop" aria-labelledby="ev-pop-title">
+  <button class="ev-pop-close" type="button" aria-label="Close">&times;</button>
+  <img class="ev-pop-photo" alt="">
+  <div class="ev-pop-body">
+    <img class="ev-pop-logo" alt="">
+    <h3 id="ev-pop-title"></h3>
+    <p class="ev-pop-text"></p>
+  </div>
+</dialog>
 
 </main>
 
@@ -798,6 +882,52 @@ p + h4{margin-top:32px}
       }).onfinish = (function (el) { return function () { el.remove(); }; })(b);
     }
   });
+})();
+
+/* Event popups. The copy lives here, keyed by the tile's data-ev; the photo
+   and logo are read off the tile itself so they cannot drift apart. */
+(function () {
+  'use strict';
+  var dlg = document.getElementById('ev-pop');
+  var tiles = [].slice.call(document.querySelectorAll('.ev'));
+  if (!dlg || !tiles.length || typeof dlg.showModal !== 'function') return;
+  var EVENTS = {
+    bike: {
+      title: 'Daytona Beach Bike Week',
+      text: 'Held every March since 1937, Bike Week is one of the largest motorcycle rallies in the world. Ten days of racing, bike shows, concerts and street festivals centred on Main Street bring riders from across the country and fill hotels throughout the Daytona Beach area.'
+    },
+    cheer: {
+      title: 'Collegiate Cheer & Dance Championship',
+      text: 'Each spring the NCA & NDA Collegiate Cheer and Dance Championship brings college teams from across the country to the oceanfront Daytona Beach Bandshell, with coaches, families and fans in tow, for several days of competition by the sea.'
+    },
+    jeep: {
+      title: 'Jeep Beach',
+      text: 'Jeep Beach brings Jeep owners to Daytona Beach every spring for a week of trail and obstacle courses, vendor shows, meet-ups and beach parades, raising money for local charities. The 2026 event celebrates America\u2019s 250th.'
+    }
+  };
+  var photo = dlg.querySelector('.ev-pop-photo'), logo = dlg.querySelector('.ev-pop-logo');
+  var title = dlg.querySelector('h3'), text = dlg.querySelector('.ev-pop-text');
+  var opener = null;
+  tiles.forEach(function (t) {
+    t.setAttribute('aria-label', EVENTS[t.dataset.ev].title + ' \u2014 view details');
+    t.addEventListener('click', function () {
+      var e = EVENTS[t.dataset.ev], p = t.querySelector('.ev-photo'), l = t.querySelector('.ev-logo');
+      opener = t;
+      photo.src = p.currentSrc || p.src;   /* decorative here: the title names it */
+      logo.src = l.currentSrc || l.src; logo.alt = l.alt;
+      logo.classList.toggle('is-wide', l.naturalWidth / (l.naturalHeight || 1) > 1.6);
+      title.textContent = e.title; text.textContent = e.text;
+      dlg.showModal();
+    });
+  });
+  dlg.querySelector('.ev-pop-close').addEventListener('click', function () { dlg.close(); });
+  /* <dialog> has no backdrop click of its own: a click on the dialog box
+     itself, outside its content, is one. */
+  dlg.addEventListener('click', function (e) {
+    var r = dlg.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close();
+  });
+  dlg.addEventListener('close', function () { if (opener) { opener.focus(); opener = null; } });
 })();
 </script>
 </body>
